@@ -97,6 +97,11 @@ public class Controller {
 		// TODO Auto-generated method stub
 	}
 
+	public String modificarPaciente(String nombre, PacienteDTO nuevoPaciente) {
+		String msj = pacienteDAO.modificarPaciente(nombre, nuevoPaciente);
+		return msj;
+	}
+
 
 
 

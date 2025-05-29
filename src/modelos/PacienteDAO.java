@@ -43,8 +43,25 @@ public class PacienteDAO {
 			msj+="\nIMC: "+pac.getImc();
 		};
 		return msj;
-		
-		
 	};
+	
+	public String modificarPaciente(String nombre, PacienteDTO nuevosDatos) {
+	    if (myDb.mapaOperadores.containsKey(nombre)) {
+	        myDb.mapaOperadores.put(nombre, nuevosDatos);
+	        return "Paciente modificado exitosamente.";
+	    } else {
+	        return "Error: paciente no encontrado.";
+	    }
+	};
+	
+	public String eliminarPaciente(String nombre) {
+	    if (myDb.mapaOperadores.containsKey(nombre)) {
+	        myDb.mapaOperadores.remove(nombre);
+	        return "Paciente eliminado correctamente.";
+	    } else {
+	        return "Error: paciente no encontrado.";
+	    }
+	}
+	
 	
 }

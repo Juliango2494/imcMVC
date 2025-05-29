@@ -96,8 +96,4 @@ public class VentanaMenu extends JFrame implements ActionListener{
 		}
 		
 	}
-
-	
-
-	
 }
