@@ -170,6 +170,10 @@ public class VistaConsulta extends JFrame implements ActionListener{
 				
 			consultar();
 		}
+		if (e.getSource()==btnEliminar) {
+			String resultado= myController.eliminarPaciente(txtNombrePac.getText());
+			limpiar();	
+		}
 		
 	}
 	private void consultar() {

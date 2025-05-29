@@ -102,6 +102,12 @@ public class Controller {
 		return msj;
 	}
 
+	public String eliminarPaciente(String nombre) {
+		String msj = pacienteDAO.eliminarPaciente(nombre);
+		return msj;
+		// TODO Auto-generated method stub
+	}
+
 
 
 
