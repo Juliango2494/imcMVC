@@ -56,7 +56,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		contentPane.add(lblTitulo);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(46, 44, 45, 13);
+		lblNombre.setBounds(46, 44, 61, 13);
 		contentPane.add(lblNombre);
 		
 		txtNombre = new JTextField();
@@ -65,7 +65,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		txtNombre.setColumns(10);
 		
 		JLabel lblEdad = new JLabel("Edad:");
-		lblEdad.setBounds(224, 44, 45, 13);
+		lblEdad.setBounds(224, 44, 61, 13);
 		contentPane.add(lblEdad);
 		
 		txtEdad = new JTextField();
@@ -74,7 +74,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		txtEdad.setColumns(10);
 		
 		JLabel lblPeso = new JLabel("Peso:");
-		lblPeso.setBounds(46, 77, 45, 13);
+		lblPeso.setBounds(46, 77, 61, 13);
 		contentPane.add(lblPeso);
 		
 		txtPeso = new JTextField();
@@ -83,7 +83,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 		txtPeso.setColumns(10);
 		
 		JLabel lblAltura = new JLabel("Altura:");
-		lblAltura.setBounds(224, 77, 45, 13);
+		lblAltura.setBounds(224, 77, 61, 13);
 		contentPane.add(lblAltura);
 		
 		txtAltura = new JTextField();
@@ -136,7 +136,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener{
 			nuevoPaciente.condicion(nuevoPaciente.getImc());
 			
 			String resultado= myController.registrarPaciente(nuevoPaciente);
-			if (resultado=="Registro exitoso") {
+			if (resultado=="ok registrarSQL en DAO") {
 				String msj="<<<<<<Registro de paciente "+txtNombre.getText()+">>>>>>";
 				msj+="\nNombre: "+nuevoPaciente.getNombre();
 				msj+="\nEdad: "+nuevoPaciente.getEdad();

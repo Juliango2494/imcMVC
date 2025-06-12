@@ -1,5 +1,8 @@
 package controlador;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import data.ModeloDatos;
 import modelos.PacienteDAO;
 import modelos.PacienteDTO;
@@ -70,7 +73,15 @@ public class Controller {
 	}
 
 	public String registrarPaciente(PacienteDTO nuevoPaciente) {
-		String msj = pacienteDAO.registrarPaciente(nuevoPaciente);
+		//String msj = pacienteDAO.registrarPaciente(nuevoPaciente);
+		String msj="";
+		try {
+			msj = pacienteDAO.registrarSql(nuevoPaciente);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			msj="error controller registrarPaciente";
+		}
 		return msj;
 	}
 
@@ -81,7 +92,15 @@ public class Controller {
 	}
 
 	public PacienteDTO consultaBD(String nombre) {
-		return pacienteDAO.consultaPaciente(nombre);
+		//return pacienteDAO.consultaPaciente(nombre);
+		try {
+			return pacienteDAO.consultaSQL(nombre);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error en controller consultaBD SQLException: "+e.getMessage());
+			return null;
+		}
 		// TODO Auto-generated method stub
 	}
 
@@ -91,21 +110,55 @@ public class Controller {
 		
 	}
 
-	public String listaPacientes() {
-		String listaPacientes=pacienteDAO.listaPacientes();
+	public ArrayList<PacienteDTO> listaPacientes() {
+		//String listaPacientes=pacienteDAO.listaPacientes();
+		ArrayList<PacienteDTO> listaPacientes=null;
+		try {
+			listaPacientes= pacienteDAO.listaSQL();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Error al traer arraylist pacientes");
+			
+		}
 		return listaPacientes;
 		// TODO Auto-generated method stub
 	}
+	
+	
 
 	public String modificarPaciente(String nombre, PacienteDTO nuevoPaciente) {
-		String msj = pacienteDAO.modificarPaciente(nombre, nuevoPaciente);
+		//String msj = pacienteDAO.modificarPaciente(nombre, nuevoPaciente);
+		String msj;
+		try {
+			msj = pacienteDAO.actualizarSQL(nombre, nuevoPaciente);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			msj="error en controller modificarPaciente";
+		}
 		return msj;
 	}
 
 	public String eliminarPaciente(String nombre) {
-		String msj = pacienteDAO.eliminarPaciente(nombre);
+		//String msj = pacienteDAO.eliminarPaciente(nombre);
+		String msj;
+		try {
+			msj = pacienteDAO.eliminarSQL(nombre);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			msj="error en controller eliminarPaciente";
+		}
 		return msj;
 		// TODO Auto-generated method stub
+	}
+
+	public String imprimirLista() {
+		// TODO Auto-generated method stub
+		String listaPacientes;
+		listaPacientes= pacienteDAO.listaSQLprint();
+		return listaPacientes;
 	}
 
 
